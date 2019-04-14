@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{09F02B37-83C7-4EEF-847C-2441A0FF73D7}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Library</OutputType>
+    <AssemblyName>KBSaveReorganization</AssemblyName>
+    <TargetFrameworkVersion>$(TargetFrameworkVersion)</TargetFrameworkVersion>
+    <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>Concepto.Packages.KBSaveReorganization</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Artech.Architecture.BL.Framework">
+      <HintPath>$(GX_SDK_DIR)\Bin\Artech.Architecture.BL.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Architecture.Common">
+      <HintPath>$(GX_SDK_DIR)\Bin\Artech.Architecture.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Architecture.Language">
+      <HintPath>$(GX_SDK_DIR)\Bin\Artech.Architecture.Language.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Architecture.UI.Framework">
+      <HintPath>$(GX_SDK_DIR)\Bin\Artech.Architecture.UI.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Common">
+      <HintPath>$(GX_SDK_DIR)\Bin\Artech.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Common.Framework">
+      <HintPath>$(GX_SDK_DIR)\Bin\Artech.Common.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Common.Helpers">
+      <HintPath>$(GX_SDK_DIR)\Bin\Artech.Common.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Common.Language">
+      <HintPath>$(GX_SDK_DIR)\Bin\Artech.Common.Language.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Common.Properties">
+      <HintPath>$(GX_SDK_DIR)\Bin\Artech.Common.Properties.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.FrameworkDE">
+      <HintPath>$(GX_SDK_DIR)\Bin\Artech.FrameworkDE.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Genexus.Common">
+      <HintPath>$(GX_SDK_DIR)\Bin\Artech.Genexus.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.MsBuild.Common">
+      <HintPath>$(GX_SDK_DIR)\Bin\Artech.MsBuild.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Packages.Patterns">
+      <HintPath>$(GX_SDK_DIR)\Bin\Artech.Packages.Patterns.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Template.Base">
+      <HintPath>$(GX_SDK_DIR)\Bin\Artech.Template.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Template.Helper">
+      <HintPath>$(GX_SDK_DIR)\Bin\Artech.Template.Helper.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Template.Parser">
+      <HintPath>$(GX_SDK_DIR)\Bin\Artech.Template.Parser.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Udm.Architecture.Common">
+      <HintPath>$(GX_SDK_DIR)\Bin\Artech.Udm.Architecture.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Udm.BL">
+      <HintPath>$(GX_SDK_DIR)\Bin\Artech.Udm.BL.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Udm.Data">
+      <HintPath>$(GX_SDK_DIR)\Bin\Artech.Udm.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Udm.Framework">
+      <HintPath>$(GX_SDK_DIR)\Bin\Artech.Udm.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Udm.Layers">
+      <HintPath>$(GX_SDK_DIR)\Bin\Artech.Udm.Layers.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Udm.Layers.BL">
+      <HintPath>$(GX_SDK_DIR)\Bin\Artech.Udm.Layers.BL.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Udm.Layers.Common">
+      <HintPath>$(GX_SDK_DIR)\Bin\Artech.Udm.Layers.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Udm.Layers.Data.SQL">
+      <HintPath>$(GX_SDK_DIR)\Bin\Artech.Udm.Layers.Data.SQL.dll</HintPath>
+    </Reference>
+    <Reference Include="Connector">
+      <HintPath>$(GX_SDK_DIR)\Bin\Connector.dll</HintPath>
+    </Reference>
+    <Reference Include="DeklaritLibrary">
+      <HintPath>$(GX_SDK_DIR)\Bin\DeklaritLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="GxDataLayer">
+      <HintPath>$(GX_SDK_DIR)\Bin\GxDataLayer.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>$(GX_SDK_DIR)\Bin\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common">
+      <HintPath>$(GX_SDK_DIR)\Bin\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling">
+      <HintPath>$(GX_SDK_DIR)\Bin\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ObjectBuilder">
+      <HintPath>$(GX_SDK_DIR)\Bin\Microsoft.Practices.ObjectBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(GX_SDK_DIR)\Src\CommonPackageInfo.cs">
+      <Link>CommonPackageInfo.cs</Link>
+    </Compile>
+    <Compile Include="Concepto.KBSaveReorganization\KBSaveReorganizationPackage.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy kbsavereorganization.dll  "%25GX_PROGRAM_DIR%25\Packages" /q /Y
+"%25GX_PROGRAM_DIR%25\genexus.exe" /install</PostBuildEvent>
+  </PropertyGroup>
+</Project>
