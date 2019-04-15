@@ -17,6 +17,7 @@ using System.Xml.Xsl;
 using System.Xml.Linq;
 using System.Reflection;
 using Artech.Architecture.BL.Framework.Services;
+using System.Text.RegularExpressions;
 
 namespace Concepto.Packages.KBSaveReorganization
 {
@@ -71,8 +72,6 @@ namespace Concepto.Packages.KBSaveReorganization
                 var invalids = System.IO.Path.GetInvalidFileNameChars();
                 ReorganizationFileNameWOExtension = String.Join("_", ReorganizationFileNameWOExtension.Split(invalids, StringSplitOptions.RemoveEmptyEntries)).TrimEnd('.');
 
-                
-               
                 string ReorganizationFileName = string.Concat(new string[] {  dirReorg2, ReorganizationFileNameWOExtension, ".sql" });
 
 
@@ -90,8 +89,7 @@ namespace Concepto.Packages.KBSaveReorganization
                     Directory.CreateDirectory(dirReorg2);
                     File.Copy(Reorgtext, ReorganizationFileName);
                     SaveReorganizationFilesNET(dirKB_targetPath, dirReorg2);
-                  //  File.Copy(ReorganizationFileName, dirReorg2  + dirWeb + ReorganizationFileNameWOExtension + ".sql", true);
-
+               
                     string ReorganizationHTML = string.Concat(dirReorg2, ReorganizationFileNameWOExtension, ".html");
                     GenerarHTML_IAR(location, ReorganizationHTML);
 
@@ -103,8 +101,6 @@ namespace Concepto.Packages.KBSaveReorganization
                     kbsp.AllowSaveInNoDesign = true;
                     kbsp.ForceSave = true;
                     kBObject.Save(kbsp);
-                
-                   // BLServices.TeamDevClient.IgnoreForCommit(kBObject.Model, kBObject.Key);
               
                    }
                    catch (Exception ex)
@@ -121,7 +117,6 @@ namespace Concepto.Packages.KBSaveReorganization
                                                 "messages.spa.dll","messages.eng.dll", "Jayrock-JSON.dll" , "runx86.exe", "ReorganizationScript.txt" };
 
             string dirName = dirReorg;
-          //  Directory.CreateDirectory(dirName);
 
             foreach (string fileCopy in FileList)
             {
@@ -148,7 +143,7 @@ namespace Concepto.Packages.KBSaveReorganization
         private void GenerarHTML_IAR(string kbpath, string outputFile)
         {
             string assemblyPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string gxpath = assemblyPath.Replace(@"Packages", @"");
+            string gxpath = assemblyPath.Replace(@"Packages", string.Empty);
             
             string iarSource = kbpath + @"\iar_objs.xml";
 
@@ -163,8 +158,33 @@ namespace Concepto.Packages.KBSaveReorganization
             foreach (string name in query)
             {
                 string xmlFile = kbpath + @"\" + name;
-                GenerarHTML(xmlFile, outputFile, gxpath);
+                GenerarHTML(xmlFile, outputFile+".tmp", gxpath);
             }
+
+            string html = File.ReadAllText(outputFile+".tmp");
+            Regex rRemScript = new Regex(@"<script[^>]*>[\s\S]*?</script>");
+            html = rRemScript.Replace(html, string.Empty);
+
+            Regex rRemKey = new Regex(@"<img.*Key.+?>");
+            html = rRemKey.Replace(html, "&raquo;");
+
+            Regex rRemIdxUp = new Regex(@"<img.*IdxAscending.+?>");
+            html = rRemIdxUp.Replace(html, "&uarr;");
+
+            Regex rRemIdxDown = new Regex(@"<img.*IdxDescending.+?>");
+            html = rRemIdxDown.Replace(html, "&darr;");
+
+            Regex rRemCollapse = new Regex(@"<img.*Collapse.+?>");
+            html = rRemCollapse.Replace(html, string.Empty);
+
+            Regex rRemWarning = new Regex(@"<img.*Warning.+?>");
+            html = rRemWarning.Replace(html, " Warning:" );
+
+            Regex rRemMeta = new Regex(@"<meta.*.+?>");
+            html = rRemMeta.Replace(html, "<meta charset=\"windows-1252\"><style>" + File.ReadAllText(gxpath + @"\gxxml\genexus.css")+"</style>");
+
+            File.WriteAllText(outputFile, html);
+            File.Delete(outputFile + ".tmp");
         }
         private static void GenerarHTML(string xmlSource, string outputFile, string gxpath)
         {
