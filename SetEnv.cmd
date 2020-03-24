@@ -20,8 +20,8 @@ ctt.exe source:LBSaveReorganization.csproj.user transform:TransformacionGX15.xml
 GOTO END_CASE
 
 :CASE_GX16
-SET GX_PROGRAM_DIR=C:\Program Files (x86)\GeneXus\GeneXus16
-SET GX_SDK_DIR=C:\Program Files (x86)\GeneXus\GeneXus16PlatformSDK
+SET GX_PROGRAM_DIR=d:\GeneXus\GeneXus16
+SET GX_SDK_DIR=d:\GeneXus\GeneXus16SDK
 SET NETFRAMEWORK_DIR="C:\Program Files (x86)\MSBuild\14.0\bin\amd64"
 SET TargetFrameworkVersion=v4.7.1
 ctt.exe source:KBSaveReorganization.csproj.user transform:TransformacionGX16.xml destination:SaveReorganization.csproj.user i
